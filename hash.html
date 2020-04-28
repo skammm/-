@@ -9,857 +9,916 @@
 <body>
    <script>
      //封装栈
-     function Stack(){
-       this.item = [];//用数组封装
-       //入栈
-       Stack.prototype.push = (element)=>{
-         this.item.push(element);
-       }
-       //出栈
-       Stack.prototype.pop = () => {
-         return this.item.pop()
-       }
-       //获取栈顶元素
-       Stack.prototype.peek = () => {
-         return this.item[length-1];
-       }
-       //判断是否为空栈
-       Stack.prototype.isEmpty = () =>{
-         return this.item.length === 0
-       }
-       //获取栈长度
-       Stack.prototype.size =() => {
+    //  function Stack(){
+    //    this.item = [];//用数组封装
+    //    //入栈
+    //    Stack.prototype.push = (element)=>{
+    //      this.item.push(element);
+    //    }
+    //    //出栈
+    //    Stack.prototype.pop = () => {
+    //      return this.item.pop()
+    //    }
+    //    //获取栈顶元素
+    //    Stack.prototype.peek = () => {
+    //      return this.item[length-1];
+    //    }
+    //    //判断是否为空栈
+    //    Stack.prototype.isEmpty = () =>{
+    //      return this.item.length === 0
+    //    }
+    //    //获取栈长度
+    //    Stack.prototype.size =() => {
       
-         return this.item.length
-      }
-       Stack.prototype.toString = () => {
-         let result = '';
-         for(let item of this.item){
-           result += item;
-         }
-         return result;
-       }
-     }
+    //      return this.item.length
+    //   }
+    //    Stack.prototype.toString = () => {
+    //      let result = '';
+    //      for(let item of this.item){
+    //        result += item;
+    //      }
+    //      return result;
+    //    }
+    //  }
      
     
 
-     //封装队列
-     function Queue(){
-      this.item = [];//用数组封装队列
-      Queue.prototype.enqueue = (element) =>{
-        this.item.push(element);
-      }
-      Queue.prototype.dequeue = () => {
-         return this.item.shift();
-       }
-       Queue.prototype.front = () => {
-        return this.item[0]
-       }
-       Queue.prototype.isEmpty = () =>{
-         return this.item.length === 0
-       }
-       Queue.prototype.size = () =>{
-         return this.item.length
-       }
-       Queue.prototype.toString = () => {
-         let result = '';
-         for(let item of this.item){
-           result += item;
-         }
-         return result;
-       }
-     }
-    //  const queue = new Queue();
-    //  queue.enqueue('aaa');
-    //  alert(queue.dequeue());
+    //  //封装队列
+    //  function Queue(){
+    //   this.item = [];//用数组封装队列
+    //   Queue.prototype.enqueue = (element) =>{
+    //     this.item.push(element);
+    //   }
+    //   Queue.prototype.dequeue = () => {
+    //      return this.item.shift();
+    //    }
+    //    Queue.prototype.front = () => {
+    //     return this.item[0]
+    //    }
+    //    Queue.prototype.isEmpty = () =>{
+    //      return this.item.length === 0
+    //    }
+    //    Queue.prototype.size = () =>{
+    //      return this.item.length
+    //    }
+    //    Queue.prototype.toString = () => {
+    //      let result = '';
+    //      for(let item of this.item){
+    //        result += item;
+    //      }
+    //      return result;
+    //    }
+    //  }
+    // //  const queue = new Queue();
+    // //  queue.enqueue('aaa');
+    // //  alert(queue.dequeue());
 
 
 
-    //封装优先级队列
-    function PriorityQueue(){
-      this.item = [];
-      //内部函数：new一个新对象
-      function Priority(element,priority){
-        this.element = element;
-        this.priority = priority;
-      }
-      PriorityQueue.prototype.enqueue = (element,priority) => {
-        const obj = new Priority(element,priority);
-        let count = 0;
-        if(this.item.length===0){
-          this.item.push(obj)
-        }else{
-          for(let item of this.item){
-            console.log(item.priority)
-            if(item.priority > obj.priority){
-              this.item.splice(count,0,obj);
-              return
-            }
-            count++
-          }
-          this.item.push(obj)
-        }
-      }
-      PriorityQueue.prototype.toString = () => {
-         let result = '';
-         for(let item of this.item){
-           result += item.element;
-         }
-         return result;
-       }
-    }
-    // const queue = new PriorityQueue();
-    // queue.enqueue('aaa',1)
-    // queue.enqueue('bbb',2)
-    // queue.enqueue('ccc',4)
-    // queue.enqueue('ddd',5)
-    // alert(queue)
-    // queue.enqueue('cha',3)
-    // alert(queue)
+    // //封装优先级队列
+    // function PriorityQueue(){
+    //   this.item = [];
+    //   //内部函数：new一个新对象
+    //   function Priority(element,priority){
+    //     this.element = element;
+    //     this.priority = priority;
+    //   }
+    //   PriorityQueue.prototype.enqueue = (element,priority) => {
+    //     const obj = new Priority(element,priority);
+    //     let count = 0;
+    //     if(this.item.length===0){
+    //       this.item.push(obj)
+    //     }else{
+    //       for(let item of this.item){
+    //         console.log(item.priority)
+    //         if(item.priority > obj.priority){
+    //           this.item.splice(count,0,obj);
+    //           return
+    //         }
+    //         count++
+    //       }
+    //       this.item.push(obj)
+    //     }
+    //   }
+    //   PriorityQueue.prototype.toString = () => {
+    //      let result = '';
+    //      for(let item of this.item){
+    //        result += item.element;
+    //      }
+    //      return result;
+    //    }
+    // }
+    // // const queue = new PriorityQueue();
+    // // queue.enqueue('aaa',1)
+    // // queue.enqueue('bbb',2)
+    // // queue.enqueue('ccc',4)
+    // // queue.enqueue('ddd',5)
+    // // alert(queue)
+    // // queue.enqueue('cha',3)
+    // // alert(queue)
 
-    //封装单向链表
-    function List(){
-      function Node(data){
-        this.data = data;
-        this.next = null
-      }
-      this.head = null;
-      this.length = 0;
-      List.prototype.append = (data) => {
-        const node = new Node(data)
-        if(this.length === 0){
-          this.head = node;
-        }else{
-          let current = this.head;
-          while(current.next){
-            current = current.next 
-          }
-          current.next = node;
-        }
-        this.length += 1;
-      }
-      List.prototype.insert = (data,position) => {
-         if(position<0||position>this.length) return false;
-         var node = new Node(data);
-         if(this.length === 0){
-           this.head = node;
-         }else{
-           if(position===0){
-             node.next = this.head.next;
-             this.head = node;
-           }else{
-             var count = 0;
-             var current = this.head;
-             var preNode = null
-             while(count<position){
+    // //封装单向链表
+    // function List(){
+    //   function Node(data){
+    //     this.data = data;
+    //     this.next = null
+    //   }
+    //   this.head = null;
+    //   this.length = 0;
+    //   List.prototype.append = (data) => {
+    //     const node = new Node(data)
+    //     if(this.length === 0){
+    //       this.head = node;
+    //     }else{
+    //       let current = this.head;
+    //       while(current.next){
+    //         current = current.next 
+    //       }
+    //       current.next = node;
+    //     }
+    //     this.length += 1;
+    //   }
+    //   List.prototype.insert = (data,position) => {
+    //      if(position<0||position>this.length) return false;
+    //      var node = new Node(data);
+    //      if(this.length === 0){
+    //        this.head = node;
+    //      }else{
+    //        if(position===0){
+    //          node.next = this.head.next;
+    //          this.head = node;
+    //        }else{
+    //          var count = 0;
+    //          var current = this.head;
+    //          var preNode = null
+    //          while(count<position){
                
-              preNode = current
-              current = current.next;
-              count+=1;
-             }
-             node.next = preNode.next;
-             preNode.next = node;
-           }
-         }
-         this.length += 1;
-      }
-      List.prototype.get = (position) => {
-        if(position<0||position>this.length) return false;
-        var count = 0;
-        var current = this.head;
-        while(count < position){
-          current =current.next;
-          count += 1;
-        }
-        return current.data;
-      }
-      List.prototype.indexOf = (element) => {
-        var count = 0;
-        current = this.head;
-        while(current){
-          if(current.data === element){
-            return count
-          }
-          current=current.next;
-          count += 1;
-        }
-        return -1;
-      }
-      List.prototype.removeAt=(position) => {
-        if(position<0||position>this.length) return false;
-        if(position === 0){
-          this.head = this.head.next;
-        }else{
-          var count = 0;
-          var current = this.head;
-          var preNode = null
-          while(count < position){
-            preNode = current;
-            current = current.next;
-            count+=1;
-          }
-          preNode.next = current.next;
-        }
-        this.length -= 1;
-        return current.data;
-      }
-      List.prototype.remove = (element) => {
-        const index = this.indexOf(element);
-        this.length -= 1;
-        return this.removeAt(index);
-      }
-      List.prototype.toString = () =>{
-        let result = '';
-        let current = this.head;
-        while(current){
-          result += current.data;
-          current = current.next;
-        }
-        return result
-      }
-      List.prototype.isEmpty = () => {
-        return this.length === 0;
-      }
-      List.prototype.size = () => {
-        return this.length
-      }
-    }
-    // const list = new List();
-    // list.append('aaa');
-    // list.append('bbb')
-    // list.append('ccc')
-    // alert(list)
-    // list.insert('qiqi',2);
-    // alert(list)
-    // alert(list.get(2))
-    // alert(list.indexOf('bbb'))
-    // alert(list.removeAt(1))
-    // alert(list.remove('qiqi'))
-    // alert(list)
+    //           preNode = current
+    //           current = current.next;
+    //           count+=1;
+    //          }
+    //          node.next = preNode.next;
+    //          preNode.next = node;
+    //        }
+    //      }
+    //      this.length += 1;
+    //   }
+    //   List.prototype.get = (position) => {
+    //     if(position<0||position>this.length) return false;
+    //     var count = 0;
+    //     var current = this.head;
+    //     while(count < position){
+    //       current =current.next;
+    //       count += 1;
+    //     }
+    //     return current.data;
+    //   }
+    //   List.prototype.indexOf = (element) => {
+    //     var count = 0;
+    //     current = this.head;
+    //     while(current){
+    //       if(current.data === element){
+    //         return count
+    //       }
+    //       current=current.next;
+    //       count += 1;
+    //     }
+    //     return -1;
+    //   }
+    //   List.prototype.removeAt=(position) => {
+    //     if(position<0||position>this.length) return false;
+    //     if(position === 0){
+    //       this.head = this.head.next;
+    //     }else{
+    //       var count = 0;
+    //       var current = this.head;
+    //       var preNode = null
+    //       while(count < position){
+    //         preNode = current;
+    //         current = current.next;
+    //         count+=1;
+    //       }
+    //       preNode.next = current.next;
+    //     }
+    //     this.length -= 1;
+    //     return current.data;
+    //   }
+    //   List.prototype.remove = (element) => {
+    //     const index = this.indexOf(element);
+    //     this.length -= 1;
+    //     return this.removeAt(index);
+    //   }
+    //   List.prototype.toString = () =>{
+    //     let result = '';
+    //     let current = this.head;
+    //     while(current){
+    //       result += current.data;
+    //       current = current.next;
+    //     }
+    //     return result
+    //   }
+    //   List.prototype.isEmpty = () => {
+    //     return this.length === 0;
+    //   }
+    //   List.prototype.size = () => {
+    //     return this.length
+    //   }
+    // }
+    // // const list = new List();
+    // // list.append('aaa');
+    // // list.append('bbb')
+    // // list.append('ccc')
+    // // alert(list)
+    // // list.insert('qiqi',2);
+    // // alert(list)
+    // // alert(list.get(2))
+    // // alert(list.indexOf('bbb'))
+    // // alert(list.removeAt(1))
+    // // alert(list.remove('qiqi'))
+    // // alert(list)
 
 
 
-    //封装双向链表
-    function DoubleLinkList(){
-      this.head = null;//表头
-      this.tail = null;//表尾
-      this.length = 0;//链表长度
-      //  封装节点
-      function Node(data){
-        this.data = data;
-        this.pre = null;
-        this.next = null;
-      }
-      //末尾添加节点
-      DoubleLinkList.prototype.append = (data) =>{
-        const node = new Node(data);
-        if(this.length === 0){
-          this.head = node;
-          this.tail = node;
-        }else{
-          var current = this.head;
-          while(current.next){
-            current = current.next;
-          }
-          node.pre = current;
-          current.next = node;
-          this.tail = node;
-        }
-        this.length += 1;
-      }
-      //插入节点
-      DoubleLinkList.prototype.insert = (data,position) => {
-        if(position<0||position>this.length) return false;
-        const node = new Node(data)
-        if(this.length === 0){
-          this.head = node;
-        }else{
-          if(position === 0){
-            this.head.pre = node;
-            node.next = this.head;
-            this.head = node;
-          }else if(position === this.length){
-            this.tail.next = node;
-            node.pre = this.tail;
-            this.tail = node;
-          }else{
-            var count = 0;
-            var current = this.head;
-            var preNode = null
-            while(count < position){
-              count += 1;
-              preNode = current;
-              current = current.next;
-            }
-            preNode.next = node;
-            node.next = current;
-            current.pre = node;
-            node.pre = preNode;
-          }
-        }
-        this.length += 1;
-      }
-      //获取某一位子上的节点
-      DoubleLinkList.prototype.get = (position) =>{
-        if(position<0||position>this.length) return false;
-        var count = 0;
-        var current = this.head;
-        while(count<position){
-          current = current.next;
-          count+=1;
-        }
-        return current.data;
-      }
-      //获取某一节点的位子
-      DoubleLinkList.prototype.indexOf = (element) => {
-        var count = 0;
-        current = this.head;
-        while(current){
-          if(current.data === element){
-            return count
-          }
-          current=current.next;
-          count += 1;
-        }
-        return -1;
-      }
-      //通过位置移除某一节点
-      DoubleLinkList.prototype.removeAt = (position) => {
-        if(position<0||position>this.length-1) return false;
-        var current = this.head;
-        if(this.length === 1){
-          this.head = null;
-          this.tail = null;
-        }else{
-          if(position === 0){
-          this.head = this.head.next;
-          this.head.pre = null;
-        }else if(position === this.length-1){
-          this.tail.pre.next = null;
-          this.tail = this.tail.pre;
-        }else{
-          var count = 0;
-          while(count < position){
-            current = current.next;
-            count += 1;
-          }
-          current.next.pre = current.pre;
-          current.pre.next = current.next;
-        }
-        this.length -= 1;
-        return current.data;
-        }
+    // //封装双向链表
+    // function DoubleLinkList(){
+    //   this.head = null;//表头
+    //   this.tail = null;//表尾
+    //   this.length = 0;//链表长度
+    //   //  封装节点
+    //   function Node(data){
+    //     this.data = data;
+    //     this.pre = null;
+    //     this.next = null;
+    //   }
+    //   //末尾添加节点
+    //   DoubleLinkList.prototype.append = (data) =>{
+    //     const node = new Node(data);
+    //     if(this.length === 0){
+    //       this.head = node;
+    //       this.tail = node;
+    //     }else{
+    //       var current = this.head;
+    //       while(current.next){
+    //         current = current.next;
+    //       }
+    //       node.pre = current;
+    //       current.next = node;
+    //       this.tail = node;
+    //     }
+    //     this.length += 1;
+    //   }
+    //   //插入节点
+    //   DoubleLinkList.prototype.insert = (data,position) => {
+    //     if(position<0||position>this.length) return false;
+    //     const node = new Node(data)
+    //     if(this.length === 0){
+    //       this.head = node;
+    //     }else{
+    //       if(position === 0){
+    //         this.head.pre = node;
+    //         node.next = this.head;
+    //         this.head = node;
+    //       }else if(position === this.length){
+    //         this.tail.next = node;
+    //         node.pre = this.tail;
+    //         this.tail = node;
+    //       }else{
+    //         var count = 0;
+    //         var current = this.head;
+    //         var preNode = null
+    //         while(count < position){
+    //           count += 1;
+    //           preNode = current;
+    //           current = current.next;
+    //         }
+    //         preNode.next = node;
+    //         node.next = current;
+    //         current.pre = node;
+    //         node.pre = preNode;
+    //       }
+    //     }
+    //     this.length += 1;
+    //   }
+    //   //获取某一位子上的节点
+    //   DoubleLinkList.prototype.get = (position) =>{
+    //     if(position<0||position>this.length) return false;
+    //     var count = 0;
+    //     var current = this.head;
+    //     while(count<position){
+    //       current = current.next;
+    //       count+=1;
+    //     }
+    //     return current.data;
+    //   }
+    //   //获取某一节点的位子
+    //   DoubleLinkList.prototype.indexOf = (element) => {
+    //     var count = 0;
+    //     current = this.head;
+    //     while(current){
+    //       if(current.data === element){
+    //         return count
+    //       }
+    //       current=current.next;
+    //       count += 1;
+    //     }
+    //     return -1;
+    //   }
+    //   //通过位置移除某一节点
+    //   DoubleLinkList.prototype.removeAt = (position) => {
+    //     if(position<0||position>this.length-1) return false;
+    //     var current = this.head;
+    //     if(this.length === 1){
+    //       this.head = null;
+    //       this.tail = null;
+    //     }else{
+    //       if(position === 0){
+    //       this.head = this.head.next;
+    //       this.head.pre = null;
+    //     }else if(position === this.length-1){
+    //       this.tail.pre.next = null;
+    //       this.tail = this.tail.pre;
+    //     }else{
+    //       var count = 0;
+    //       while(count < position){
+    //         current = current.next;
+    //         count += 1;
+    //       }
+    //       current.next.pre = current.pre;
+    //       current.pre.next = current.next;
+    //     }
+    //     this.length -= 1;
+    //     return current.data;
+    //     }
         
-      }
-      //通过节点的值移除某一节点
-      DoubleLinkList.prototype.remove = (element) => {
-        var index = this.indexOf(element);
-        this.length -= 1;
-        return this.removeAt(index);
-      }
-      //更新某一位子上节点的内容
-      DoubleLinkList.prototype.update = (data,position) => {
-        if(position<0||position>this.length) return false;
-        var count = 0;
-        var current = this.head;
-        while(count < position){
-          current = current.next;
-          count += 1;
-        }
-        current.data = data;
-      }
-      DoubleLinkList.prototype.toString =()=>{
-        return this.backString()
-      }
-      DoubleLinkList.prototype.isEmpty = () => {
-        return this.length === 0;
-      }
-      DoubleLinkList.prototype.size = () => {
-        return this.length;
-      }
-      //向后输出所有节点的内容
-      DoubleLinkList.prototype.backString = () => {
-        var current = this.head;
-        var result = ''
-        while(current){
-          result += current.data;
-          current = current.next
-        }
-        return result;
-      }
-      //向前输出所有节点的内容
-      DoubleLinkList.prototype.forwardString = () => {
-        var current = this.tail;
-        var result = ''
-        while(current){
-          result += current.data;
-          current = current.pre
-        }
-        return result;
-      }
-    }
-    // const list = new DoubleLinkList();
-    // list.append('aaa');
-    // list.append('bbb');
-    // list.append('ccc');
-    // alert(list.forwardString())
-    // list.insert('qiqi',1);
-    // alert(list)
-    // alert(list.get(2))
-    // alert(list.indexOf('aaa'))
-    // alert(list.removeAt(0))
-    // alert(list)
-    // list.update('hhh',0);
-    // alert(list)
+    //   }
+    //   //通过节点的值移除某一节点
+    //   DoubleLinkList.prototype.remove = (element) => {
+    //     var index = this.indexOf(element);
+    //     this.length -= 1;
+    //     return this.removeAt(index);
+    //   }
+    //   //更新某一位子上节点的内容
+    //   DoubleLinkList.prototype.update = (data,position) => {
+    //     if(position<0||position>this.length) return false;
+    //     var count = 0;
+    //     var current = this.head;
+    //     while(count < position){
+    //       current = current.next;
+    //       count += 1;
+    //     }
+    //     current.data = data;
+    //   }
+    //   DoubleLinkList.prototype.toString =()=>{
+    //     return this.backString()
+    //   }
+    //   DoubleLinkList.prototype.isEmpty = () => {
+    //     return this.length === 0;
+    //   }
+    //   DoubleLinkList.prototype.size = () => {
+    //     return this.length;
+    //   }
+    //   //向后输出所有节点的内容
+    //   DoubleLinkList.prototype.backString = () => {
+    //     var current = this.head;
+    //     var result = ''
+    //     while(current){
+    //       result += current.data;
+    //       current = current.next
+    //     }
+    //     return result;
+    //   }
+    //   //向前输出所有节点的内容
+    //   DoubleLinkList.prototype.forwardString = () => {
+    //     var current = this.tail;
+    //     var result = ''
+    //     while(current){
+    //       result += current.data;
+    //       current = current.pre
+    //     }
+    //     return result;
+    //   }
+    // }
+    // // const list = new DoubleLinkList();
+    // // list.append('aaa');
+    // // list.append('bbb');
+    // // list.append('ccc');
+    // // alert(list.forwardString())
+    // // list.insert('qiqi',1);
+    // // alert(list)
+    // // alert(list.get(2))
+    // // alert(list.indexOf('aaa'))
+    // // alert(list.removeAt(0))
+    // // alert(list)
+    // // list.update('hhh',0);
+    // // alert(list)
 
 
-    //封装集合
-    function Set(){
-      this.item = {};//通过对象封装
-      //添加数据
-      Set.prototype.add = function(value){
-        if(this.has(value)) return false;
-        this.item[value] = value;
-        return true;
-      }
-      Set.prototype.has =function(value){
-        return this.item.hasOwnProperty(value);
-      }
-      Set.prototype.size = function(){
-        return Object.keys(this.item).length;
-      }
-      Set.prototype.remove = function(value){
-        if(!this.has(value)) return false;
-        delete this.item[value];
-        return true;
-      }
-      Set.prototype.clear = () => {
-        this.item = {}
-      }
-      //获取集合中的所有对象属性
-      Set.prototype.values = function(){
-        return Object.keys(this.item);
-      }
-      //并集
-      Set.prototype.union = function(otherSet) {
-        var set = new Set();
-        var value = this.values();
-        //利用对象中不会有两个相同的属性
-        for(var i=0;i<value.length;i++){
-          set.add(value[i]);
-        }
-        value = otherSet.values();       
-        for(var i=0;i<value.length;i++){
-          set.add(value[i]);
-        }
-        return set;
-      }
-      //交集
-      Set.prototype.interSection = function(otherSet){
-        var set = new Set();
-        var value = this.values();
-        for(var i=0;i < value.length;i++){
-          if(otherSet.has(value[i])){
-            set.add(value[i])
-          }
-        }
-        return set;
-      }
-      //差集
-      Set.prototype.difference = function(otherSet){
-        var set = new Set();
-        var value = this.values();
-        for(var i=0;i < value.length;i++){
-          if(!otherSet.has(value[i])){
-            set.add(value[i])
-          }
-        }
-        return set;
-      }
-    }
-    // var set = new Set();
-    // set.add('aaa');
-    // set.add(1);
-    // set.add(true);
-    // alert(set.values())
-    // var otherSet = new Set;
-    // otherSet.add('bbb');
-    // otherSet.add('ccc');
-    // otherSet.add(1)
-    // alert(otherSet.values())
-    // var unionSet = set.union(otherSet);
-    // alert(unionSet.values())
-    // var inter = set.interSection(otherSet)
-    // alert(inter.values())
-    // alert(set.difference(otherSet).values())
+    // //封装集合
+    // function Set(){
+    //   this.item = {};//通过对象封装
+    //   //添加数据
+    //   Set.prototype.add = function(value){
+    //     if(this.has(value)) return false;
+    //     this.item[value] = value;
+    //     return true;
+    //   }
+    //   Set.prototype.has =function(value){
+    //     return this.item.hasOwnProperty(value);
+    //   }
+    //   Set.prototype.size = function(){
+    //     return Object.keys(this.item).length;
+    //   }
+    //   Set.prototype.remove = function(value){
+    //     if(!this.has(value)) return false;
+    //     delete this.item[value];
+    //     return true;
+    //   }
+    //   Set.prototype.clear = () => {
+    //     this.item = {}
+    //   }
+    //   //获取集合中的所有对象属性
+    //   Set.prototype.values = function(){
+    //     return Object.keys(this.item);
+    //   }
+    //   //并集
+    //   Set.prototype.union = function(otherSet) {
+    //     var set = new Set();
+    //     var value = this.values();
+    //     //利用对象中不会有两个相同的属性
+    //     for(var i=0;i<value.length;i++){
+    //       set.add(value[i]);
+    //     }
+    //     value = otherSet.values();       
+    //     for(var i=0;i<value.length;i++){
+    //       set.add(value[i]);
+    //     }
+    //     return set;
+    //   }
+    //   //交集
+    //   Set.prototype.interSection = function(otherSet){
+    //     var set = new Set();
+    //     var value = this.values();
+    //     for(var i=0;i < value.length;i++){
+    //       if(otherSet.has(value[i])){
+    //         set.add(value[i])
+    //       }
+    //     }
+    //     return set;
+    //   }
+    //   //差集
+    //   Set.prototype.difference = function(otherSet){
+    //     var set = new Set();
+    //     var value = this.values();
+    //     for(var i=0;i < value.length;i++){
+    //       if(!otherSet.has(value[i])){
+    //         set.add(value[i])
+    //       }
+    //     }
+    //     return set;
+    //   }
+    // }
+    // // var set = new Set();
+    // // set.add('aaa');
+    // // set.add(1);
+    // // set.add(true);
+    // // alert(set.values())
+    // // var otherSet = new Set;
+    // // otherSet.add('bbb');
+    // // otherSet.add('ccc');
+    // // otherSet.add(1)
+    // // alert(otherSet.values())
+    // // var unionSet = set.union(otherSet);
+    // // alert(unionSet.values())
+    // // var inter = set.interSection(otherSet)
+    // // alert(inter.values())
+    // // alert(set.difference(otherSet).values())
 
 
 
-    //封装一个哈希表，与数组不同的是能加快删除、查找操作
-    function HashTable(){
-      this.storage = [];//数组存储数据
-      this.limit = 7;//标记数组中一共可以存放多少数据
-      this.count = 0;//当前存放了多少数据
-      //哈希函数
-      HashTable.prototype.hasFunc = function(str,size){
-        //哈希化
-        var hasCode = 0;
-        for(var i=0;i<str.length;i++){
-          hasCode = 37*hasCode + str.charCodeAt(i)
-        }
-        var index = hasCode % size
-        return index;
-      }
-      //增加/修改操作
-      HashTable.prototype.put = function(key,value){
-        //根据key找到对应的index
-        var index = this.hasFunc(key,this.limit);
-        //根据index取出对应的bucket
-        var bucket = this.storage[index];
-        //判断bucket是否为null
-        if(bucket === undefined){
-          bucket = [];
-          this.storage[index] = bucket;
-        }
-        //判断该值是否存在于bucket中，如果存在修改值
+    // //封装一个哈希表，与数组不同的是能加快删除、查找操作
+    // function HashTable(){
+    //   this.storage = [];//数组存储数据
+    //   this.limit = 7;//标记数组中一共可以存放多少数据
+    //   this.count = 0;//当前存放了多少数据
+    //   //哈希函数
+    //   HashTable.prototype.hasFunc = function(str,size){
+    //     //哈希化
+    //     var hasCode = 0;
+    //     for(var i=0;i<str.length;i++){
+    //       hasCode = 37*hasCode + str.charCodeAt(i)
+    //     }
+    //     var index = hasCode % size
+    //     return index;
+    //   }
+    //   //增加/修改操作
+    //   HashTable.prototype.put = function(key,value){
+    //     //根据key找到对应的index
+    //     var index = this.hasFunc(key,this.limit);
+    //     //根据index取出对应的bucket
+    //     var bucket = this.storage[index];
+    //     //判断bucket是否为null
+    //     if(bucket === undefined){
+    //       bucket = [];
+    //       this.storage[index] = bucket;
+    //     }
+    //     //判断该值是否存在于bucket中，如果存在修改值
        
-          for(var i=0;i<bucket.length;i++){
-          var tuple = bucket[i];
-          if(tuple[0] === key){
-            tuple[1] =value;
-            return;
-          }
-        }
+    //       for(var i=0;i<bucket.length;i++){
+    //       var tuple = bucket[i];
+    //       if(tuple[0] === key){
+    //         tuple[1] =value;
+    //         return;
+    //       }
+    //     }
         
-        //该值不存在，将该值存储于哈希表中
-        bucket.push([key,value])
-        this.count += 1;
-        //判断是否需要进行扩容
-        if(this.count > this.limit*0.75){
-          var newlimit = this.limit*2;
-          var newPrime = this.getPrime(newlimit);
-          this.resize(newPrime)
-        }
-      }
-      //获取操作
-      HashTable.prototype.get = function(key){
-        var index = this.hasFunc(key,this.limit);
-        var bucket = this.storage[index];
-        if(bucket === null) return null;
-        //有bucket，就进行线性查找
-        for(var i=0;i<bucket.length;i++){
-          var tuple = bucket[i];
-          if(tuple[0]===key){
-            return tuple[1]
-          }
-        }
-        return null
-      }
-      //删除操作
-      HashTable.prototype.remove = function(key){
-        //通过哈希函数找到其下标值
-        var index = this.hasFunc(key,this.limit);
-        var bucket = this.storage[index];
-        if(bucket === null) return null;
-        //有bucket，就进行线性查找
-        for(var i=0;i<bucket.length;i++){
-          var tuple = bucket[i];
-          if(tuple[0]===key){
-            bucket.splice(i,1);
-            this.count--;
-            //判断是否需要减小存放数据的数组长度
-            if(this.count < this.limit*0.25){
-              var newlimit = Math.floor(this.limit/2)
-              var newPrime = this.getPrime(newlimit);
-              this.resize(newPrime);
-            }
-            return tuple[1];
-          }
-        }
+    //     //该值不存在，将该值存储于哈希表中
+    //     bucket.push([key,value])
+    //     this.count += 1;
+    //     //判断是否需要进行扩容
+    //     if(this.count > this.limit*0.75){
+    //       var newlimit = this.limit*2;
+    //       var newPrime = this.getPrime(newlimit);
+    //       this.resize(newPrime)
+    //     }
+    //   }
+    //   //获取操作
+    //   HashTable.prototype.get = function(key){
+    //     var index = this.hasFunc(key,this.limit);
+    //     var bucket = this.storage[index];
+    //     if(bucket === null) return null;
+    //     //有bucket，就进行线性查找
+    //     for(var i=0;i<bucket.length;i++){
+    //       var tuple = bucket[i];
+    //       if(tuple[0]===key){
+    //         return tuple[1]
+    //       }
+    //     }
+    //     return null
+    //   }
+    //   //删除操作
+    //   HashTable.prototype.remove = function(key){
+    //     //通过哈希函数找到其下标值
+    //     var index = this.hasFunc(key,this.limit);
+    //     var bucket = this.storage[index];
+    //     if(bucket === null) return null;
+    //     //有bucket，就进行线性查找
+    //     for(var i=0;i<bucket.length;i++){
+    //       var tuple = bucket[i];
+    //       if(tuple[0]===key){
+    //         bucket.splice(i,1);
+    //         this.count--;
+    //         //判断是否需要减小存放数据的数组长度
+    //         if(this.count < this.limit*0.25){
+    //           var newlimit = Math.floor(this.limit/2)
+    //           var newPrime = this.getPrime(newlimit);
+    //           this.resize(newPrime);
+    //         }
+    //         return tuple[1];
+    //       }
+    //     }
        
-        return null;
-      }
-      //扩容操作  扩容时，需要将哈希表里的数据全部重新分配
-      HashTable.prototype.resize = function(size){
-        //将原来的哈希表保存在oldStorage中
-        var oldStorage = this.storage;
-        this.storage = [];
-        this.count = 0;
-        this.limit = size;
-        for(var i=0;i<oldStorage.length;i++){
-          var bucket = oldStorage[i];
-          if(bucket === null){
-            continue
-          }
-          //如果bucket中有数据，取出数据重新插入
-          for(var j=0;j<bucket.length;j++){
-            var tuple = bucket[j];
-            this.put(tuple[0],tuple[1]);
-          }
-        }
+    //     return null;
+    //   }
+    //   //扩容操作  扩容时，需要将哈希表里的数据全部重新分配
+    //   HashTable.prototype.resize = function(size){
+    //     //将原来的哈希表保存在oldStorage中
+    //     var oldStorage = this.storage;
+    //     this.storage = [];
+    //     this.count = 0;
+    //     this.limit = size;
+    //     for(var i=0;i<oldStorage.length;i++){
+    //       var bucket = oldStorage[i];
+    //       if(bucket === null){
+    //         continue
+    //       }
+    //       //如果bucket中有数据，取出数据重新插入
+    //       for(var j=0;j<bucket.length;j++){
+    //         var tuple = bucket[j];
+    //         this.put(tuple[0],tuple[1]);
+    //       }
+    //     }
 
-      }
-      //判断一个数是否为质数
-      HashTable.prototype.isPrime = function(num){
-        var sqrt = parseInt(Math.sqrt(num));
-        for(var i=1;i<=sqrt;i++){
-          if(num%i === 0){
-            return false;
-          }
-        }
-        return true;
-      }
-      HashTable.prototype.getPrime = function(num){
-        while(!this.isPrime(num)){
-          num++
-        }
-        return num;
-      }
+    //   }
+    //   //判断一个数是否为质数
+    //   HashTable.prototype.isPrime = function(num){
+    //     var sqrt = parseInt(Math.sqrt(num));
+    //     for(var i=1;i<=sqrt;i++){
+    //       if(num%i === 0){
+    //         return false;
+    //       }
+    //     }
+    //     return true;
+    //   }
+    //   HashTable.prototype.getPrime = function(num){
+    //     while(!this.isPrime(num)){
+    //       num++
+    //     }
+    //     return num;
+    //   }
 
       
-    }
-    // var hash = new HashTable();
-    // hash.put('hh',000);
-    // hash.put('cxk',002);
-    // hash.put('aaa',001);
+    // }
+    // // var hash = new HashTable();
+    // // hash.put('hh',000);
+    // // hash.put('cxk',002);
+    // // hash.put('aaa',001);
    
-    // hash.put('xz',003);
-    // hash.put('whq',006);
-    // hash.put('xz','jjj');
-    // alert(hash.get('xz'));
-    // alert(hash.remove('whq'))
-    // alert(hash.get('whq'))
-    // alert(hash)
+    // // hash.put('xz',003);
+    // // hash.put('whq',006);
+    // // hash.put('xz','jjj');
+    // // alert(hash.get('xz'));
+    // // alert(hash.remove('whq'))
+    // // alert(hash.get('whq'))
+    // // alert(hash)
 
 
-    //封装一个二叉树
-    function BinarySearchTree(){
-      this.root = null;
-      //封装一个节点的数据结构
-      function Node(key){
-        this.key = key;
-        this.left = null;
-        this.right = null;
-      }
-      //插入节点
-      BinarySearchTree.prototype.insert = function(key){
-        var newNode = new Node(key)
-        if(this.root===null){
-          this.root = newNode;
-        }else{
-          this.insertNode(this.root,newNode);
-        }
+    // //封装一个二叉树
+    // function BinarySearchTree(){
+    //   this.root = null;
+    //   //封装一个节点的数据结构
+    //   function Node(key){
+    //     this.key = key;
+    //     this.left = null;
+    //     this.right = null;
+    //   }
+    //   //插入节点
+    //   BinarySearchTree.prototype.insert = function(key){
+    //     var newNode = new Node(key)
+    //     if(this.root===null){
+    //       this.root = newNode;
+    //     }else{
+    //       this.insertNode(this.root,newNode);
+    //     }
 
-      }
+    //   }
       
-      BinarySearchTree.prototype.insertNode = function(node,newNode){
-        if(newNode.key<node.key){
-          if(node.left===null){
-            node.left = newNode
-          }else{
-            this.insertNode(node.left,newNode);
-          }
+    //   BinarySearchTree.prototype.insertNode = function(node,newNode){
+    //     if(newNode.key<node.key){
+    //       if(node.left===null){
+    //         node.left = newNode
+    //       }else{
+    //         this.insertNode(node.left,newNode);
+    //       }
           
-        }else if(newNode.key>node.key){
-          if(node.right === null){
-            node.right = newNode;
-          }else{
-            this.insertNode(node.right,newNode);
-          }
-        }
-      }
-      //先序遍历
-      BinarySearchTree.prototype.preOrderTravaersal = function(handle){
+    //     }else if(newNode.key>node.key){
+    //       if(node.right === null){
+    //         node.right = newNode;
+    //       }else{
+    //         this.insertNode(node.right,newNode);
+    //       }
+    //     }
+    //   }
+    //   //先序遍历
+    //   BinarySearchTree.prototype.preOrderTravaersal = function(handle){
 
-        BinarySearchTree.prototype.preOrderTravaersalNode(this.root,handle)
-      }
-      BinarySearchTree.prototype.preOrderTravaersalNode = function(node,handle){
-        if(node!==null){
-          handle(node.key);
-          this.preOrderTravaersalNode(node.left,handle)
-          this.preOrderTravaersalNode(node.right,handle);
-        }
-      }
-      //中序遍历
-      BinarySearchTree.prototype.midOrderTravaersal = function(handle){
-        BinarySearchTree.prototype.midOrderTravaersalNode(this.root,handle);
-      }
-      BinarySearchTree.prototype.midOrderTravaersalNode = function(node,handle){
-        if(node!==null){
-          this.midOrderTravaersalNode(node.left,handle);
-          handle(node.key);
-          this.midOrderTravaersalNode(node.right,handle);
-        }
-      }
-      //后序遍历
-      BinarySearchTree.prototype.inOrderTravaersal = function(handle){
-        BinarySearchTree.prototype.inOrderTravaersalNode(this.root,handle);
-      }
-      BinarySearchTree.prototype.inOrderTravaersalNode = function(node,handle){
-        if(node!==null){
-          this.inOrderTravaersalNode(node.left,handle);
-          this.inOrderTravaersalNode(node.right,handle);
-          handle(node.key);
-        }
-      }
-      //求最小值
-      BinarySearchTree.prototype.minValue = function(){
-        var node = this.root;
-        if(node){
-          while(node.left!==null){
-          node = node.left;
-          }
-        return node.key;
-        }else{
-          return null
-        }
-      }
-      //求最大值
-      BinarySearchTree.prototype.maxValue = function(){
-        var node = this.root;
-        if(node){
-          while(node.left !== null){
-            node = node.right;
-          }
-          return node.key
-        }
-        return null
-      }
-      //搜索特定key,搜索到了返回true，没有返回false
-      BinarySearchTree.prototype.search = function(key){
-        var node = this.root;
-        while(node!==null){
-          if(node.key>key){
-            node = node.left;
-          }else if(node.key <key){
-            node = node.right
-          }else{
-            return true
-          }
-        }
-        return false;
-      }
-      //删除节点
-      BinarySearchTree.prototype.remove = function(key){
-        var parent = null;
-        var isLeft = false;
-        var node = this.root;
-        while(node.key!==key){
-          parent = node;
-          if(key < node.key){
-            node = node.left;
-            isLeft = true
-          }else {
-            node = node.right;
-            isLeft = false
-          }
-          if(node===null){
-            return false;
-          }
+    //     BinarySearchTree.prototype.preOrderTravaersalNode(this.root,handle)
+    //   }
+    //   BinarySearchTree.prototype.preOrderTravaersalNode = function(node,handle){
+    //     if(node!==null){
+    //       handle(node.key);
+    //       this.preOrderTravaersalNode(node.left,handle)
+    //       this.preOrderTravaersalNode(node.right,handle);
+    //     }
+    //   }
+    //   //中序遍历
+    //   BinarySearchTree.prototype.midOrderTravaersal = function(handle){
+    //     BinarySearchTree.prototype.midOrderTravaersalNode(this.root,handle);
+    //   }
+    //   BinarySearchTree.prototype.midOrderTravaersalNode = function(node,handle){
+    //     if(node!==null){
+    //       this.midOrderTravaersalNode(node.left,handle);
+    //       handle(node.key);
+    //       this.midOrderTravaersalNode(node.right,handle);
+    //     }
+    //   }
+    //   //后序遍历
+    //   BinarySearchTree.prototype.inOrderTravaersal = function(handle){
+    //     BinarySearchTree.prototype.inOrderTravaersalNode(this.root,handle);
+    //   }
+    //   BinarySearchTree.prototype.inOrderTravaersalNode = function(node,handle){
+    //     if(node!==null){
+    //       this.inOrderTravaersalNode(node.left,handle);
+    //       this.inOrderTravaersalNode(node.right,handle);
+    //       handle(node.key);
+    //     }
+    //   }
+    //   //求最小值
+    //   BinarySearchTree.prototype.minValue = function(){
+    //     var node = this.root;
+    //     if(node){
+    //       while(node.left!==null){
+    //       node = node.left;
+    //       }
+    //     return node.key;
+    //     }else{
+    //       return null
+    //     }
+    //   }
+    //   //求最大值
+    //   BinarySearchTree.prototype.maxValue = function(){
+    //     var node = this.root;
+    //     if(node){
+    //       while(node.left !== null){
+    //         node = node.right;
+    //       }
+    //       return node.key
+    //     }
+    //     return null
+    //   }
+    //   //搜索特定key,搜索到了返回true，没有返回false
+    //   BinarySearchTree.prototype.search = function(key){
+    //     var node = this.root;
+    //     while(node!==null){
+    //       if(node.key>key){
+    //         node = node.left;
+    //       }else if(node.key <key){
+    //         node = node.right
+    //       }else{
+    //         return true
+    //       }
+    //     }
+    //     return false;
+    //   }
+    //   //删除节点
+    //   BinarySearchTree.prototype.remove = function(key){
+    //     var parent = null;
+    //     var isLeft = false;
+    //     var node = this.root;
+    //     while(node.key!==key){
+    //       parent = node;
+    //       if(key < node.key){
+    //         node = node.left;
+    //         isLeft = true
+    //       }else {
+    //         node = node.right;
+    //         isLeft = false
+    //       }
+    //       if(node===null){
+    //         return false;
+    //       }
           
-        }
-        //找到要删除的节点
-        //1.要删除的节点没有子节点
-        if(node.left===null && node.right===null){
-          if(this.root===node){
-            this.root =null;
-          }else{
-            if(isLeft){
-              parent.left = null;
-            }else{
-              parent.right = null
-            }
-          }
+    //     }
+    //     //找到要删除的节点
+    //     //1.要删除的节点没有子节点
+    //     if(node.left===null && node.right===null){
+    //       if(this.root===node){
+    //         this.root =null;
+    //       }else{
+    //         if(isLeft){
+    //           parent.left = null;
+    //         }else{
+    //           parent.right = null
+    //         }
+    //       }
 
-        }
-        //2.要删除的有一个子节点
-        else if(node.right === null){//该子节点为左节点
-         if(node === this.root){
-           this.root = node.left
-         }
-         else if(isLeft){
-           parent.left = node.left
-         }else{
-          parent.right = node.left
-         }
-        }
-        else if(node.left === null){//该子节点为右节点
-          if(node= this.root){
-            this.root = node.right
-          }
-          else if(isLeft){
-            parent.left = node.right
-          }else{
-            parent.right = node.right
-          }
+    //     }
+    //     //2.要删除的有一个子节点
+    //     else if(node.right === null){//该子节点为左节点
+    //      if(node === this.root){
+    //        this.root = node.left
+    //      }
+    //      else if(isLeft){
+    //        parent.left = node.left
+    //      }else{
+    //       parent.right = node.left
+    //      }
+    //     }
+    //     else if(node.left === null){//该子节点为右节点
+    //       if(node= this.root){
+    //         this.root = node.right
+    //       }
+    //       else if(isLeft){
+    //         parent.left = node.right
+    //       }else{
+    //         parent.right = node.right
+    //       }
 
-        }
-        //3.要删除的节点有两个子节点
-        else{
-          var current = this.getSuccessor(node);
-          if(this.root === node){
-            this.root = current;
-          }else if(isLeft){
-            parent.left = current
-          }else{
-            parent.right = current;
-          }
-          current.left = node.left
+    //     }
+    //     //3.要删除的节点有两个子节点
+    //     else{
+    //       var current = this.getSuccessor(node);
+    //       if(this.root === node){
+    //         this.root = current;
+    //       }else if(isLeft){
+    //         parent.left = current
+    //       }else{
+    //         parent.right = current;
+    //       }
+    //       current.left = node.left
 
-        }
-        return true
-      }
-      BinarySearchTree.prototype.getSuccessor = function(delNode){
-        var currentParent = null
-        var current = delNode.right;
-        while(current.left!==null){
-          currentParent = current;
-          current = current.left;
-        }
-        if(current !== delNode.right){
-          currentParent.left = current.right;
-          current.right = node.right;
+    //     }
+    //     return true
+    //   }
+    //   BinarySearchTree.prototype.getSuccessor = function(delNode){
+    //     var currentParent = null
+    //     var current = delNode.right;
+    //     while(current.left!==null){
+    //       currentParent = current;
+    //       current = current.left;
+    //     }
+    //     if(current !== delNode.right){
+    //       currentParent.left = current.right;
+    //       current.right = node.right;
          
-        }
-        return current;
-      }
+    //     }
+    //     return current;
+    //   }
       
-    }
-    const bst = new BinarySearchTree();
-    bst.insert(11);
-    bst.insert(7);
-    bst.insert(15);
-    bst.insert(5);
-    bst.insert(3);
-    bst.insert(9);
-    bst.insert(8);
-    bst.insert(10);
-    bst.insert(13);
-    bst.insert(12);
-    bst.insert(14);
-    bst.insert(20);
-    bst.insert(18);
-    bst.insert(25);
-    var result = '';
-    bst.preOrderTravaersal(function(key){
-      result += key+' ';
-    })
-    alert(result)
-    var result = '';
-    bst.midOrderTravaersal(function(key){
-      result += key+' ';
-    })
-    alert(result)
+    // }
+    // const bst = new BinarySearchTree();
+    // bst.insert(11);
+    // bst.insert(7);
+    // bst.insert(15);
+    // bst.insert(5);
+    // bst.insert(3);
+    // bst.insert(9);
+    // bst.insert(8);
+    // bst.insert(10);
+    // bst.insert(13);
+    // bst.insert(12);
+    // bst.insert(14);
+    // bst.insert(20);
+    // bst.insert(18);
+    // bst.insert(25);
+    // var result = '';
+    // bst.preOrderTravaersal(function(key){
+    //   result += key+' ';
+    // })
+    // alert(result)
+    // var result = '';
+    // bst.midOrderTravaersal(function(key){
+    //   result += key+' ';
+    // })
+    // alert(result)
    
-    alert(bst.minValue())
-    alert(bst.search(20))
-    alert(bst.remove(20))
-    alert(bst.search(20))
-    var result = '';
-    bst.inOrderTravaersal(function(key){
-      result += key+' ';
-    })
-    alert(result)
+    // alert(bst.minValue())
+    // alert(bst.search(20))
+    // alert(bst.remove(20))
+    // alert(bst.search(20))
+    // var result = '';
+    // bst.inOrderTravaersal(function(key){
+    //   result += key+' ';
+    // })
+    // alert(result)
+    //快速排序
+
+    function ArrayList(arr){
+      //选择枢纽
+      this.array = arr;
+
+      ArrayList.prototype.swap = function(m,n){
+        var current = this.array[m];
+        this.array[m] = this.array[n];
+        this.array[n] = current;
+      }
+      ArrayList.prototype.median = function(left,right){
+        var center = Math.floor((left+right)/2);
+        if(this.array[left] > this.array[center]){
+          this.swap(left,center);
+        }
+        if(this.array[center] > this.array[right]){
+          this.swap(center,right)
+        }
+        if(this.array[left] >this.array[right]){
+          this.swap(left,right)
+        }
+        this.swap(center,right - 1);
+        return this.array[right - 1];
+      }
+      //快速排序的实现
+      ArrayList.prototype.quickSort = function(){
+         this.quick(0,this.array.length - 1);
+      }
+      ArrayList.prototype.quick = function(left,right){
+        if(left>=right) {
+          return;
+        };
+        //获取枢纽
+        var pivot = this.median(left,right);
+        console.log(pivot)
+        var i = left;
+        var j = right - 1;
+        while(true){
+          while(this.array[++i] < pivot) {}
+          while(this.array[--j] > pivot) {}
+          if(i < j){
+            this.swap(i,j)
+          }else{
+            break;
+          }
+        }
+        this.swap(i,right-1);
+        //递归  分而治之
+        console.log(this.array)
+        this.quick(left,i-1);
+        this.quick(i+1,right);
+      }
+
+    }
+    var arr = [30,24,34,68,90,12,19,58,26,88,66];
+    var list = new ArrayList(arr);
+    list.quickSort()
+    console.log(list.array);
 
 
 
